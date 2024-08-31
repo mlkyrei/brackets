@@ -2,10 +2,10 @@ module.exports = function check(str, bracketsConfig) {
   // your solution
   function check(str, bracketsConfig) {
     const stack = [];
-    const brMap = new Map(bracketsConfig);
+    const bracketsMap = new Map(bracketsConfig);
 
     for (let char of str) {
-        if (brMap.has(char)) {
+        if (bracketsMap.has(char)) {
             if (stack.length > 0 && stack[stack.length - 1] === char) {
                 stack.pop();
             } else {
@@ -13,7 +13,7 @@ module.exports = function check(str, bracketsConfig) {
             }
         } else {
             const lastOpening = stack.pop();
-            if (brMap.get(lastOpening) !== char) {
+            if (bracketsMap.get(lastOpening) !== char) {
                 return false;
             }
         }
